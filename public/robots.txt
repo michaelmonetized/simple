@@ -1,0 +1,9 @@
+User-agent: *
+Crawl-delay: 0
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /privacy/
+Disallow: /refunds/
+Disallow: /terms/
+Sitemap: https://my.hustlelaunch.com/sitemap.xml

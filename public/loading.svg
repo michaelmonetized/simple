@@ -1,0 +1,59 @@
+<svg
+  id="loading-spinner"
+  viewBox="0 0 100 100"
+  width="256px"
+  height="256px"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  shape-rendering="geometricPrecision"
+  text-rendering="geometricPrecision"
+>
+  <defs>
+    <style>
+      #outer-spin {
+        stroke-linecap: round;
+        transform-origin: center;
+        animation: loading-spin 19s linear infinite;
+      }
+
+      #outer-spin circle {
+        fill: none;
+        stroke: #94e4ffff;
+        stroke-width: 10;
+        stroke-dasharray: 31.4;
+        stroke-dashoffset: 251.2;
+        transform: rotate(180deg);
+        animation: loading-draw 7s ease-in-out infinite alternate,
+          loading-spin 14s linear infinite;
+        transform-origin: center;
+      }
+
+      #outer-spin circle#two {
+        stroke: #ff94bbff;
+        stroke-dasharray: 62.8;
+        stroke-dashoffset: 251.2;
+        transform: rotate(0deg);
+        animation: loading-draw 3s ease-in-out infinite alternate,
+          loading-spin 8s linear infinite;
+      }
+
+      @keyframes loading-draw {
+        to {
+          stroke-dashoffset: -125.6;
+          stroke-dasharray: 251.2;
+        }
+      }
+
+      @keyframes loading-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </defs>
+
+  <g id="outer-spin">
+    <circle id="one" cx="50" cy="50" r="40" />
+    <circle id="two" cx="50" cy="50" r="40" />
+  </g>
+</svg>
