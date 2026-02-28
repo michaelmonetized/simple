@@ -48,7 +48,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
           },
           (error) => {
-            console.error('Error accessing document:', error);
+            if (process.env.NODE_ENV === 'development') {
+              console.error('Error accessing document:', error);
+            }
             setUserData(null);
           }
         );
