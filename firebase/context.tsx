@@ -21,7 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userCredential) => {
       if (userCredential) {
-        console.log('User is authenticated:', userCredential);
+        // console.log('User is authenticated:', userCredential);
         const docRef = doc(db, 'users', userCredential.uid);
 
         onSnapshot(
@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           (documentSnapshot) => {
             if (documentSnapshot.exists()) {
               const data = documentSnapshot.data() as user;
-              console.log('User document data:', data);
+              // console.log('User document data:', data);
               setUserData(data);
             } else {
               const c = collection(db, 'users');
@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           },
           (error) => {
             if (process.env.NODE_ENV === 'development') {
-              console.error('Error accessing document:', error);
+              // console.error('Error accessing document:', error);
             }
             setUserData(null);
           }

@@ -45,13 +45,13 @@ export type functionResult = {
 
 export function signup(data: user) {
   const created = (userCredential: UserCredential) => {
-    console.log(userCredential);
+    // console.log(userCredential);
 
     const uid = userCredential.user.uid;
-    console.log(uid);
+    // console.log(uid);
 
     data.id = uid;
-    console.log(data);
+    // console.log(data);
 
     const docRef = doc(collection(db, 'users'), uid);
 
@@ -99,7 +99,7 @@ export function signup(data: user) {
 
     const didGetRejected = { status: 400, message: message, data: reason };
 
-    console.log(didGetRejected);
+    // console.log(didGetRejected);
 
     return didGetRejected;
   };
@@ -108,21 +108,21 @@ export function signup(data: user) {
     return await createUserWithEmailAndPassword(auth, data.email, data.password)
       .then(
         (userCredential) => {
-          console.log(userCredential);
+          // console.log(userCredential);
           return created(userCredential);
         },
         (reason) => {
-          console.log(reason);
+          // console.log(reason);
           return rejected(reason);
         }
       )
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         return rejected(error);
       });
   };
 
-  console.log(getUserCredential);
+  // console.log(getUserCredential);
 
   return getUserCredential;
 }
@@ -146,21 +146,21 @@ export function SignUpForm() {
       [key]: value,
     });
 
-    console.log('values:', values);
+    // console.log('values:', values);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
 
     const getUserCredential = signup(values);
-    console.log(getUserCredential);
+    // console.log(getUserCredential);
 
     const userCredential = await getUserCredential();
-    console.log(userCredential);
+    // console.log(userCredential);
 
     const { status, data, message } = userCredential;
-    console.log({ status, data, message });
+    // console.log({ status, data, message });
   };
 
   return (
@@ -236,12 +236,12 @@ export function LoginForm() {
       [key]: value,
     });
 
-    console.log('values:', values);
+    // console.log('values:', values);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
 
     const { email, password } = values;
 
@@ -251,11 +251,11 @@ export function LoginForm() {
 
     const userCredential = await signin(email, password).then((result) => {
       const { status, data, message } = result;
-      console.log({ status, data, message });
+      // console.log({ status, data, message });
       return result;
     });
 
-    console.log(userCredential);
+    // console.log(userCredential);
     const { status, data, message } = userCredential;
   };
 
@@ -288,14 +288,14 @@ export function logout() {
   signOut(auth);
 
   const didLogout = { status: 200, message: 'Logged out successfully.' };
-  console.log(didLogout);
+  // console.log(didLogout);
 
   return didLogout;
 }
 
 export function LogoutButton() {
   const handleClick = async () => {
-    console.log('logout clicked');
+    // console.log('logout clicked');
     await signOut(auth);
   };
 
