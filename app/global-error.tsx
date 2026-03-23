@@ -11,7 +11,7 @@ export default function GlobalError({
   reset: () => void
 }) {
   if (process.env.NODE_ENV === 'development') {
-    console.error(error);
+    // console.error(error);
   }
 
   return (

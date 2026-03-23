@@ -13,7 +13,7 @@ export default function Error({
 }) {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
-      console.error(error);
+      // console.error(error);
     }
   }, [error]);
 

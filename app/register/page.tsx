@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 export default function RegisterPage() {
   const authContext = useAuth();
-  console.log(authContext);
+  // console.log(authContext);
 
   if (authContext.user) {
     return (

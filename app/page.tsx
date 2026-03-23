@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const authContext = useAuth();
-  console.log(authContext);
+  // console.log(authContext);
 
   return authContext.user ? (
     <div className="flex flex-col h-dvh items-center justify-center gap-md">
