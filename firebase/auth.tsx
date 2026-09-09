@@ -354,9 +354,13 @@ export function coerceeUserObjectintoUserType(user: User) {
 }
 
 export function signinWithFacebook() {
-  const { currentUser } = auth;
+  const currentUser = auth?.currentUser ?? null;
 
   return async () => {
+    if (!auth || !db) {
+      throw new Error("Firebase is not configured");
+    }
+
     // Sign in using a popup.
     const provider = new FacebookAuthProvider();
     const result = currentUser
@@ -385,9 +389,13 @@ export function signinWithFacebook() {
 }
 
 export function signinWithGoogle() {
-  const { currentUser } = auth;
+  const currentUser = auth?.currentUser ?? null;
 
   return async () => {
+    if (!auth || !db) {
+      throw new Error("Firebase is not configured");
+    }
+
     // Sign in using a popup.
     const provider = new GoogleAuthProvider();
     const result = currentUser
@@ -416,8 +424,11 @@ export function signinWithGoogle() {
 }
 
 export function signinWithTwitter() {
-  const { currentUser } = auth;
+  const currentUser = auth?.currentUser ?? null;
   return async () => {
+    if (!auth || !db) {
+      throw new Error("Firebase is not configured");
+    }
     // Sign in using a popup.
     const provider = new TwitterAuthProvider();
     const result = currentUser
