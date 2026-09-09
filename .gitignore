@@ -36,3 +36,7 @@ serviceAccount.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Keep Vercel project link for Ship
+!.vercel/
+!.vercel/project.json
