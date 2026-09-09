@@ -16,7 +16,7 @@ Set from `.env.example`:
 - `NEXT_PUBLIC_FIREBASE_APP_ID`
 - optional `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID`
 
-Then redeploy. Expected URL: `https://simple.vercel.app` / `https://simple-hustle-launch.vercel.app`.
+Then redeploy. Stable URL: `https://simple-hustle-launch.vercel.app` (production alias `https://simple-two-silk.vercel.app`). `simple.vercel.app` is someone else’s project.
 
 ## Ship
 - `.github/workflows/ship.yml` + `.vercel/project.json` present.
