@@ -19,6 +19,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userData, setUserData] = useState<user | null>(null);
 
   useEffect(() => {
+    if (!auth || !db) {
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (userCredential) => {
       if (userCredential) {
         // console.log('User is authenticated:', userCredential);
