@@ -25,14 +25,17 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Allow production builds / prerender without secrets; auth stays inert until env is set in Vercel.
+// Soft-init: allow prerender/build without secrets. Call sites must tolerate missing config at runtime.
 export const app = firebaseConfigured
   ? getApps().length
     ? getApps()[0]
     : initializeApp(firebaseConfig)
   : null;
-export const auth = app ? getAuth(app) : null;
-export const db = app ? getFirestore(app) : null;
+
+/** @type {import('firebase/auth').Auth} */
+export const auth = /** @type {any} */ (app ? getAuth(app) : null);
+/** @type {import('firebase/firestore').Firestore} */
+export const db = /** @type {any} */ (app ? getFirestore(app) : null);
 
 if (!firebaseConfigured && process.env.NODE_ENV !== "production") {
   console.warn(

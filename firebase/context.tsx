@@ -19,13 +19,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userData, setUserData] = useState<user | null>(null);
 
   useEffect(() => {
-    if (!auth || !db) {
+    const authClient = auth;
+    const dbClient = db;
+    if (!authClient || !dbClient) {
       return;
     }
-    const unsubscribe = onAuthStateChanged(auth, (userCredential) => {
+    const unsubscribe = onAuthStateChanged(authClient, (userCredential) => {
       if (userCredential) {
         // console.log('User is authenticated:', userCredential);
-        const docRef = doc(db, 'users', userCredential.uid);
+        const docRef = doc(dbClient, 'users', userCredential.uid);
 
         onSnapshot(
           docRef,
@@ -35,7 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               // console.log('User document data:', data);
               setUserData(data);
             } else {
-              const c = collection(db, 'users');
+              const c = collection(dbClient, 'users');
 
               let d = coerceeUserObjectintoUserType(userCredential);
 

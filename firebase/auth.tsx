@@ -490,7 +490,7 @@ export function ConnectTwitterButton() {
 //}
 
 export function changePassword(newPass: string, confirmPass: string) {
-  const currUser: User | null = auth.currentUser;
+  const currUser: User | null = auth?.currentUser ?? null;
 
   if (!currUser) {
     return {
