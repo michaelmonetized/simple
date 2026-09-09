@@ -25,6 +25,19 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Firebase is intentionally retained for launch stability; see:
   - `docs/architecture/firebase-vs-convex.md`
 
+
+
+## Environment & secrets
+
+Firebase client config is loaded **only** from environment variables (see `.env.example`).
+
+1. Copy `.env.example` → `.env.local`
+2. Fill in your Firebase web app values from the Firebase console
+3. Never commit `.env*`, `serviceAccount*.json`, or other credential files
+
+Admin / service-account credentials (if needed) must use `GOOGLE_APPLICATION_CREDENTIALS` pointing at a local file that stays outside git — do not embed JSON keys in the repo.
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
